@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f5f3ed" />
+    <meta name="description" content="Créez un CV clair et professionnel en quelques minutes." />
+    <title>Crée ton CV en 5 min</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.2/html2pdf.bundle.min.js" defer></script>
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="wordmark" href="#top" aria-label="Crée ton CV en 5 min, accueil">
+        <span class="wordmark-icon" aria-hidden="true">m.</span>
+        <span>Crée ton CV en 5 min</span>
+      </a>
+      <span class="topbar-note"><span class="status-dot"></span> Gratuit, sans inscription</span>
+    </header>
+
+    <main id="top">
+      <section class="intro" aria-labelledby="page-title">
+        <div class="intro-copy">
+          <p class="eyebrow"><span>01</span> · Votre prochain chapitre commence ici</p>
+          <h1 id="page-title">Crée ton CV<br />gratuitement en <span>5 minutes</span></h1>
+          <p class="intro-lede">Les bonnes choses méritent d’être bien présentées. Raconte ton parcours, on s’occupe de la mise en page.</p>
+        </div>
+        <div class="intro-stamp" aria-hidden="true">
+          <span>PRÊT À</span>
+          <span>IMPRIMER</span>
+          <span class="stamp-star">✳</span>
+        </div>
+      </section>
+
+      <section class="workspace" aria-label="Créateur de CV">
+        <div class="editor-column">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">TON PARCOURS</p>
+              <h2>Quelques détails, et c’est parti.</h2>
+            </div>
+            <span class="step-count">01 <span>/</span> 02</span>
+          </div>
+
+          <form id="cv-form" autocomplete="on">
+            <fieldset class="form-section">
+              <legend><span class="section-number">01</span> À propos de toi</legend>
+              <label for="name">Nom complet</label>
+              <input id="name" name="name" type="text" placeholder="Ex. Camille Martin" autocomplete="name" />
+              <label for="job-title">Intitulé du poste</label>
+              <input id="job-title" name="jobTitle" type="text" placeholder="Ex. Chargée de communication" autocomplete="organization-title" />
+              <div class="field-row">
+                <div>
+                  <label for="email">E-mail <span class="optional">Optionnel</span></label>
+                  <input id="email" name="email" type="email" placeholder="camille@exemple.fr" autocomplete="email" />
+                </div>
+                <div>
+                  <label for="phone">Téléphone <span class="optional">Optionnel</span></label>
+                  <input id="phone" name="phone" type="tel" placeholder="06 12 34 56 78" autocomplete="tel" />
+                </div>
+              </div>
+              <label for="photo">Photo de profil <span class="optional">Optionnel</span></label>
+              <input id="photo" name="photo" type="file" accept="image/*" />
+            </fieldset>
+
+            <fieldset class="form-section">
+              <legend><span class="section-number">02</span> Tes compétences techniques</legend>
+              <div class="skill-input-grid">
+                <input name="hardSkill1" type="text" aria-label="Compétence technique 1" placeholder="Ex. Excel" />
+                <input name="hardSkill2" type="text" aria-label="Compétence technique 2" placeholder="Ex. Figma" />
+                <input name="hardSkill3" type="text" aria-label="Compétence technique 3" placeholder="Ex. Python" />
+                <input name="hardSkill4" type="text" aria-label="Compétence technique 4" placeholder="Ex. SEO" />
+              </div>
+              <label>Soft skills <span class="optional">4 maximum</span></label>
+              <div class="skill-input-grid">
+                <input name="softSkill1" type="text" aria-label="Soft skill 1" placeholder="Ex. Écoute" />
+                <input name="softSkill2" type="text" aria-label="Soft skill 2" placeholder="Ex. Adaptabilité" />
+                <input name="softSkill3" type="text" aria-label="Soft skill 3" placeholder="Ex. Organisation" />
+                <input name="softSkill4" type="text" aria-label="Soft skill 4" placeholder="Ex. Esprit d’équipe" />
+              </div>
+            </fieldset>
+
+            <fieldset class="form-section">
+              <legend><span class="section-number">03</span> Ta formation</legend>
+              <label for="education-title">Diplôme ou formation</label>
+              <input id="education-title" name="educationTitle" type="text" placeholder="Ex. BTS Communication" />
+              <div class="field-row">
+                <div>
+                  <label for="education-school">Établissement <span class="optional">Optionnel</span></label>
+                  <input id="education-school" name="educationSchool" type="text" placeholder="Ex. Université de Lyon" />
+                </div>
+                <div>
+                  <label for="education-years">Années <span class="optional">Optionnel</span></label>
+                  <input id="education-years" name="educationYears" type="text" placeholder="2021 – 2023" />
+                </div>
+              </div>
+              <button class="add-education" id="add-education" type="button"><span aria-hidden="true">+</span> Ajouter cette formation</button>
+              <p class="education-feedback" id="education-feedback" aria-live="polite"></p>
+            </fieldset>
+
+            <fieldset class="form-section">
+              <legend><span class="section-number">04</span> Ton expérience</legend>
+              <label for="experience-title">Poste occupé</label>
+              <input id="experience-title" name="experienceTitle" type="text" placeholder="Ex. Chargée de communication" />
+              <div class="field-row">
+                <div>
+                  <label for="experience-company">Entreprise <span class="optional">Optionnel</span></label>
+                  <input id="experience-company" name="experienceCompany" type="text" placeholder="Ex. Studio Créatif" />
+                </div>
+                <div>
+                  <label for="experience-years">Période <span class="optional">Optionnel</span></label>
+                  <input id="experience-years" name="experienceYears" type="text" placeholder="2023 – aujourd’hui" />
+                </div>
+              </div>
+              <label for="experience-missions">Missions principales <span class="optional">Optionnel</span></label>
+              <textarea id="experience-missions" name="experienceMissions" rows="2" placeholder="Ex. Création de contenus et gestion des réseaux sociaux"></textarea>
+              <button class="add-education" id="add-experience" type="button"><span aria-hidden="true">+</span> Ajouter cette expérience</button>
+              <p class="education-feedback" id="experience-feedback" aria-live="polite"></p>
+            </fieldset>
+          </form>
+          <p class="privacy-note"><span aria-hidden="true">↳</span> Tes informations restent dans ton navigateur.</p>
+        </div>
+
+        <aside class="preview-column" aria-label="Aperçu du CV">
+          <div class="preview-heading">
+            <div>
+              <p class="eyebrow">APERÇU EN DIRECT</p>
+              <h2>Ton CV prend forme.</h2>
+            </div>
+            <span class="live-indicator"><span></span> A4 · LIVE</span>
+          </div>
+          <article class="resume" id="resume" aria-label="Aperçu de votre CV">
+            <div class="resume-topline"><span>CURRICULUM VITAE</span></div>
+            <div class="resume-layout">
+              <aside class="resume-sidebar" aria-label="Coordonnées et compétences">
+                <div class="resume-photo" id="resume-photo-frame">
+                  <img id="resume-photo" alt="Photo de profil" hidden />
+                  <span id="resume-initials" aria-hidden="true">CV</span>
+                </div>
+                <section class="resume-side-section">
+                  <h4>COORDONNÉES</h4>
+                  <div class="resume-contact" id="resume-contact"><p class="resume-empty">Ton e-mail et ton numéro apparaîtront ici.</p></div>
+                </section>
+                <section class="resume-side-section">
+                  <h4>COMPÉTENCES TECHNIQUES</h4>
+                  <div class="resume-skills" id="resume-hard-skills"><p class="resume-empty">Ajoute jusqu’à 4 compétences.</p></div>
+                </section>
+                <section class="resume-side-section">
+                  <h4>SOFT SKILLS</h4>
+                  <div class="resume-skills" id="resume-soft-skills"><p class="resume-empty">Ajoute jusqu’à 4 qualités.</p></div>
+                </section>
+              </aside>
+              <div class="resume-main">
+                <header class="resume-header">
+                  <p class="resume-kicker">PROFIL PROFESSIONNEL</p>
+                  <h3 id="resume-name">Ton nom<span>.</span></h3>
+                  <p class="resume-job" id="resume-job">Ton prochain poste</p>
+                </header>
+                <section class="resume-section" id="education-section">
+                  <h4><span>01</span> FORMATION</h4>
+                  <div class="resume-copy" id="resume-education"><p class="resume-empty">Ajoute tes études ou diplômes.</p></div>
+                </section>
+                <section class="resume-section" id="experience-section">
+                  <h4><span>02</span> EXPÉRIENCE</h4>
+                  <div class="resume-copy" id="resume-experience"><p class="resume-empty">Ton parcours professionnel apparaîtra ici.</p></div>
+                </section>
+              </div>
+            </div>
+          </article>
+          <button class="generate-button" id="generate-button" type="button">
+            <span>Télécharger mon CV en PDF</span>
+            <span class="button-arrow" aria-hidden="true">↗</span>
+          </button>
+          <p class="print-hint" id="download-status">Document A4 · PDF prêt à télécharger</p>
+        </aside>
+      </section>
+    </main>
+    <footer class="site-footer"><span>TON PARCOURS, MIS EN VALEUR.</span><span>Simplement. Gratuitement.</span></footer>
+  </body>
+</html>
